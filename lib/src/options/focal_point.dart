@@ -42,6 +42,9 @@ class FocalPoint {
   /// Projects the [FocalPoint] onto the map widget given its [size]. The
   /// resulting [Point] represents the absolute pixel coordinates on the map
   /// widget where the marker should be aligned.
-  Point<double> project(Point<double> size) =>
-      (size * 0.5).scaleBy(ratio) + offset;
+  Point<double> project(Point<double> size) {
+    var point = size * 0.5;
+    point = Point(point.x * ratio.x, point.y * ratio.y);
+    return point + offset;
+  }
 }
